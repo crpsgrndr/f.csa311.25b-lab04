@@ -56,7 +56,7 @@ public class IntQueueTest {
 
     @Test
     public void testNotEmpty() {
-        mQueue.enqueue(1);
+        //mQueue.enqueue(1);
         assertFalse(mQueue.isEmpty());
     }
 
@@ -94,7 +94,8 @@ public class IntQueueTest {
 
     @Test
     public void testDequeueEmptyQueue() {
-        
+        assertTrue(mQueue.isEmpty());
+        assertNull(mQueue.dequeue());
     }
 
     @Test
