@@ -1,8 +1,5 @@
 package edu.cmu.cs.cs214.rec02;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * TODO:
@@ -41,8 +44,6 @@ public class IntQueueTest {
      */
     @Before
     public void setUp() {
-        // comment/uncomment these lines to test each class
-        // mQueue = new LinkedIntQueue();
         mQueue = new ArrayIntQueue();
 
         testList = new ArrayList<>(List.of(1, 2, 3));
@@ -50,7 +51,6 @@ public class IntQueueTest {
 
     @Test
     public void testIsEmpty() {
-        // This is an example unit test
         assertTrue(mQueue.isEmpty());
     }
 
@@ -73,8 +73,6 @@ public class IntQueueTest {
 
     @Test
     public void testEnqueue() {
-        // This is an example unit test
-        // This is an example unit test
         for (int i = 0; i < testList.size(); i++) {
             mQueue.enqueue(testList.get(i));
             assertEquals(testList.get(0), mQueue.peek());
@@ -115,7 +113,6 @@ public class IntQueueTest {
 
     @Test
     public void testContent() throws IOException {
-        // This is an example unit test
         InputStream in = new FileInputStream("src/test/resources/data.txt");
         try (Scanner scanner = new Scanner(in)) {
             scanner.useDelimiter("\\s*fish\\s*");
@@ -136,15 +133,12 @@ public class IntQueueTest {
 
     @Test
     public void testEnsureCapacity() {
-        // Fill the queue to its initial capacity
         for (int i = 0; i < 10; i++) {
             mQueue.enqueue(i);
         }
 
-        // Add one more element to trigger capacity increase
         mQueue.enqueue(10);
 
-        // Verify the queue size and elements
         assertEquals(11, mQueue.size());
         for (int i = 0; i < 11; i++) {
             assertEquals(i, mQueue.dequeue().intValue());
